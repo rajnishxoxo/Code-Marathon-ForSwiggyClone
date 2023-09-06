@@ -1,15 +1,28 @@
 import React from "react";
-import  ReactDOM  from "react-dom";
+import ReactDOM from "react-dom";
+import Header from "./Components/Header";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const App = ()=>{
-    return(
-        <div className="bg-red-900">
-            <h1 className="bg-green-800 font-bold w-1/2">Hello</h1>
-        </div>
-    )
-}
 
-root.render(<App/>)
 
+
+const App = () => {
+  return (
+    <div>
+      <Header />
+    </div>
+  );
+};
+
+const router = createBrowserRouter([
+    {
+        path:'/' ,
+        element:<App/>
+    }
+]);
+
+
+
+root.render(<RouterProvider router={router}/>);
