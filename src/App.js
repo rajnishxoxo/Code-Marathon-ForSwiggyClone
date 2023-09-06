@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./Components/Header";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import Cart from "./Components/Cart";
+import Body from "./Components/Body";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -12,6 +14,7 @@ const App = () => {
   return (
     <div>
       <Header />
+      <Outlet/>
     </div>
   );
 };
@@ -19,7 +22,17 @@ const App = () => {
 const router = createBrowserRouter([
     {
         path:'/' ,
-        element:<App/>
+        element:<App/>,
+        children:[
+            {
+                path:'/body',
+                element:<Body/>
+            },
+            {
+                path:'/cart',
+                element:<Cart/>
+            }
+        ]
     }
 ]);
 
