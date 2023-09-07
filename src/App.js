@@ -7,35 +7,32 @@ import Body from "./Components/Body";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-
-
-
 const App = () => {
   return (
     <div>
       <Header />
-      <Outlet/>
+
+      <Outlet />
     </div>
   );
 };
 
 const router = createBrowserRouter([
-    {
-        path:'/' ,
-        element:<App/>,
-        children:[
-            {
-                path:'/body',
-                element:<Body/>
-            },
-            {
-                path:'/cart',
-                element:<Cart/>
-            }
-        ]
-    }
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+    ],
+  },
 ]);
 
-
-
-root.render(<RouterProvider router={router}/>);
+root.render(<RouterProvider router={router} />);

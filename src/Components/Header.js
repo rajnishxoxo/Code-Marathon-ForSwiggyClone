@@ -39,6 +39,17 @@ const Header = () => {
             </button>
           </div>
         </div>
+
+        <div className="relative">
+          <img
+            className="w-full  h-96 -z-50 object-cover"
+            src="https://images.unsplash.com/photo-1476362555312-ab9e108a0b7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+          ></img>
+          <div class="flex-col absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center ">
+            <h1 className=" m-2 text-white text-5xl">New Season Arrival</h1>
+            <p className="text-xl font-medium text-white mt-3 ">Get ready to drizzle in style! Shop our monsoon discounts and make waves of savings on your favorite items</p>
+          </div>
+        </div>
       </div>
     </div>
   );
