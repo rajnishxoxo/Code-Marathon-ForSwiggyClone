@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import Card from "./Card";
-import { list } from "postcss";
 
 const Body = () => {
   const [productDetail, setProductDetail] = useState([]);
@@ -59,7 +58,7 @@ const Body = () => {
 
   return (
     <>
-      <div class="w-full flex flex-row justify-evenly mt-10 mb-16 h-20 p-7 items-center">
+      <div class="w-full flex flex-row justify-evenly mt-10 mb-16 h-20 p-7 items-center -z-10 ">
         <button
           className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
           onClick={handleAll}

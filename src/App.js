@@ -5,14 +5,14 @@ import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Cart from "./Components/Cart";
 import Body from "./Components/Body";
 import { Provider } from "react-redux";
-import cartStore from "./Utils/CartStore";
+import appStore from "./Utils/CartStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const App = () => {
   return (
     <div>
-      <Provider store={cartStore}>
+      <Provider store={appStore}>
         <Header />
 
         <Outlet />

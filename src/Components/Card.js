@@ -1,4 +1,12 @@
+
+
+
+
+
+
 const Card = (prop) => {
+  
+
 
   const { id, title, price, description, image, rating } = prop.list;
 
@@ -21,7 +29,7 @@ const Card = (prop) => {
   <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
     Buy Now
   </button>
-  <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+  <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" >
     Add To Cart
   </button>
 </div>

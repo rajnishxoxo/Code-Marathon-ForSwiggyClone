@@ -1,11 +1,20 @@
+ import { useSelector } from "react-redux/";
+
 const Header = () => {
+
+  const cart = useSelector((store)=>{
+    return store.cart.item
+  })
+
+  console.log(cart)
+
   return (
     <div>
       {/*container */}
       <div className="flex flex-col w-full  h-auto  p-2 shadow-md  bg-slate-100">
         {/* Div for upper Section. */}
 
-        <div className="flex flex-row">
+        <div className="flex flex-row fixed top-0 z-10 w-full   bg-slate-100">
           <div className="m-4 p-4 w-1/5 ">
             <h1 className="font-bold text-2xl my-3 ">Apna-Store</h1>
           </div>
@@ -35,7 +44,7 @@ const Header = () => {
               Register
             </button>
             <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white   h-14 w-20  border border-blue-500 hover:border-transparent rounded-md">
-              Cart🛒
+              Cart🛒-()
             </button>
           </div>
         </div>
