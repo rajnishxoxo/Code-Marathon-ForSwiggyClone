@@ -4,15 +4,19 @@ import Header from "./Components/Header";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Cart from "./Components/Cart";
 import Body from "./Components/Body";
+import { Provider } from "react-redux";
+import cartStore from "./Utils/CartStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const App = () => {
   return (
     <div>
-      <Header />
+      <Provider store={cartStore}>
+        <Header />
 
-      <Outlet />
+        <Outlet />
+      </Provider>
     </div>
   );
 };
