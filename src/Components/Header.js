@@ -6,7 +6,7 @@ const Header = () => {
     return store.cart.item
   })
 
-  console.log(cart)
+  
 
   return (
     <div>
@@ -44,7 +44,7 @@ const Header = () => {
               Register
             </button>
             <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white   h-14 w-20  border border-blue-500 hover:border-transparent rounded-md">
-              Cart🛒-()
+              Cart🛒-({cart.length})
             </button>
           </div>
         </div>
