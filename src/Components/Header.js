@@ -43,7 +43,7 @@ const Header = () => {
             <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white  h-14 w-20   border border-blue-500 hover:border-transparent rounded-md">
               Register
             </button>
-            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white   h-14 w-20  border border-blue-500 hover:border-transparent rounded-md">
+            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white   h-14 w-auto  border border-blue-500 hover:border-transparent rounded-md">
               Cart🛒-({cart.length})
             </button>
           </div>
