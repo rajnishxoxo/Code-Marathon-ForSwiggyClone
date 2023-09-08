@@ -7,6 +7,7 @@ import Body from "./Components/Body";
 import { Provider } from "react-redux";
 import appStore from "./Utils/CartStore";
 import Product from "./Components/Product";
+import Login from "./Pages/Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -24,24 +25,29 @@ const App = () => {
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Body />,
       },
-
       {
-        path: "/cart",
+        path: '/cart',
         element: <Cart />,
       },
       {
-        path: "/product/",
+        path: '/product',
         element: <Product />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
       },
     ],
   },
+  
 ]);
+
 
 root.render(<RouterProvider router={router} />);

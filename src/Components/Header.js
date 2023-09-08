@@ -1,4 +1,5 @@
  import { useSelector } from "react-redux/";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -37,9 +38,11 @@ const Header = () => {
           </div>
 
           <div className="flex flex-row w-2/5 items-center justify-evenly">
+            <Link  to={'/login'}>
             <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white  h-14 w-20 border border-blue-500 hover:border-transparent rounded-md">
               Login
             </button>
+            </Link>
             <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white  h-14 w-20   border border-blue-500 hover:border-transparent rounded-md">
               Register
             </button>
