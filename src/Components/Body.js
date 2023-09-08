@@ -99,6 +99,9 @@ const Body = () => {
 
       <div className=" w-full  mx-auto ml-16 grid grid-cols-3 gap-20 justify-evenly mt-9 ">
         {filterData.map((prod) => {
+          
+          const {id} = prod
+          console.log(id)
           return <Card list={prod} />;
         })}
       </div>

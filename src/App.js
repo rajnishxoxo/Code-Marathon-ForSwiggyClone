@@ -6,6 +6,7 @@ import Cart from "./Components/Cart";
 import Body from "./Components/Body";
 import { Provider } from "react-redux";
 import appStore from "./Utils/CartStore";
+import Product from "./Components/Product";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/product/",
+        element: <Product />,
       },
     ],
   },
