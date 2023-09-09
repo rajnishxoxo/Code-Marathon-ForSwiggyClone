@@ -77,35 +77,39 @@ const Body = () => {
   };
 
   return (
-    <>
-      {/* Based on Category */}
-      <div class="w-full flex flex-row justify-evenly mt-10 mb-16 h-20 p-7 items-center -z-10 ">
+    <div className="flex flex-row">
+    <div className="flex flex-col border-b-2 w-1/5 my-5"  >
+     <div className="flex flex-row">
+     <h1 className="mx-2 text-3xl font-bold  ">Filters</h1>
+      <button>⬇️</button>
+     </div>
+     <div class="w-full flex flex-col gap-2 mx-auto  ">
         <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 font-bold  rounded-l"
           onClick={handleAll}
         >
           All
         </button>
         <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 font-bold rounded-l"
           onClick={handleMenSetting}
         >
           Men's Clothing
         </button>
         <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 font-bold  rounded-r"
           onClick={handleWomenSetting}
         >
           Women's Clothing
         </button>
         <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 font-bold  rounded-l"
           onClick={jewellerySetting}
         >
           Jewellery
         </button>
         <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 font-bold  rounded-r"
           onClick={electronicsSetting}
         >
           Electronics
@@ -113,27 +117,32 @@ const Body = () => {
 
         {/* based on price */}
         <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 font-bold  rounded-r"
           onClick={handleHighToLow}
         >
           High-to-Low
         </button>
         <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 font-bold  rounded-r"
           onClick={handleLowtoHigh}
         >
           Low-to-High
         </button>
 
         <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 font-bold  rounded-r"
           onClick={handleRating}
         >
           Highly Rated Products
         </button>
       </div>
+    </div>
 
-      <div>
+      {/* Based on Category */}
+     
+
+     <div className="w-3/5">
+     <div>
         <h1 className=" m-2 text-black text-center text-4xl">
           Newly Added Products
         </h1>
@@ -144,7 +153,8 @@ const Body = () => {
           return <Card list={prod} />;
         })}
       </div>
-    </>
+     </div>
+    </div>
   );
 };
 
