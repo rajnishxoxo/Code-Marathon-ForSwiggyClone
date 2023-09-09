@@ -88,9 +88,6 @@ const Card = (prop) => {
 export const promotedProduct = (Card)=>{
   return(prop)=>{
 
-
-    console.log(prop)
-
     return(
       <>
       <label className="absolute text-white bg-orange-600 w-auto text-center rounded  p-1">Promoted</label>

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Card from "./Card";
 
 import { promotedProduct } from "./Card";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [productDetail, setProductDetail] = useState([]);
@@ -164,7 +165,15 @@ const Body = () => {
         </div>
 
         <div className=" w-full  mx-auto ml-16 grid grid-cols-3 gap-20 justify-evenly mt-9 ">
-          {filterData.map((data) => data.rating.rate>4?<NewCard list={data}/>:<Card list={data}/>)}
+          {filterData.map((data, id) => (
+            <Link to={"/product/"+data.id} key={id}>
+              {data.rating.rate > 3 ? (
+                <NewCard list={data} />
+              ) : (
+                <Card list={data} />
+              )}
+            </Link>
+          ))}
         </div>
       </div>
     </div>
