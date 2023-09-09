@@ -53,9 +53,14 @@ const Card = (prop) => {
         <h4 className="text-xs font-normal leading-tight tracking-tighter text-opacity-75   text-center m-2">
           {truncatedDescription}
         </h4>
+        <div className="flex flex-row justify-evenly">
         <p className="text-xl font-medium w-full text-center whitespace-nowrap truncate overflow-hidden  ">
           {price}$
         </p>
+        <p className="text-xl font-medium w-full text-center whitespace-nowrap truncate overflow-hidden  ">
+          {rating.rate}⭐
+        </p>
+        </div>
 
         <div class=" w-full m-2 flex flex-row justify-evenly items-center">
         
