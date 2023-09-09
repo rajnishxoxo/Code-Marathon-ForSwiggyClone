@@ -7,10 +7,6 @@ const Body = () => {
 
   const [filterData, setFilterData] = useState([]);
 
-  const [basedOnCostSort , setBasedOnCost] = useState([]);
-
-
-
   const fetchData = async () => {
     const storeData = await fetch("https://fakestoreapi.com/products");
 
@@ -24,23 +20,19 @@ const Body = () => {
     fetchData();
   }, []);
 
-  const handleHighToLow = ()=>{
-    const sortedArray = [...productDetail].sort( (a,b)=>b.price-a.price);
-    
+  console.log(productDetail.rating)
+
+  const handleHighToLow = () => {
+    const sortedArray = [...productDetail].sort((a, b) => b.price - a.price);
+
     setFilterData(sortedArray);
-  }
+  };
 
-  const handleLowtoHigh = ()=>{
-    const sortedArray = [...productDetail].sort( (a,b)=>a.price-b.price);
-    console.log(sortedArray)
+  const handleLowtoHigh = () => {
+    const sortedArray = [...productDetail].sort((a, b) => a.price - b.price);
+    console.log(sortedArray);
     setFilterData(sortedArray);
-  }
-
-
-
-  
-  
-
+  };
 
   const handleAll = () => {
     setFilterData(productDetail);
@@ -78,10 +70,9 @@ const Body = () => {
     setFilterData(electronicList);
   };
 
-  
-
   return (
     <>
+      {/* Based on Category */}
       <div class="w-full flex flex-row justify-evenly mt-10 mb-16 h-20 p-7 items-center -z-10 ">
         <button
           className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
@@ -113,6 +104,8 @@ const Body = () => {
         >
           Electronics
         </button>
+
+        {/* based on price */}
         <button
           className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
           onClick={handleHighToLow}
@@ -135,9 +128,6 @@ const Body = () => {
 
       <div className=" w-full  mx-auto ml-16 grid grid-cols-3 gap-20 justify-evenly mt-9 ">
         {filterData.map((prod) => {
-          
-   
-          
           return <Card list={prod} />;
         })}
       </div>
