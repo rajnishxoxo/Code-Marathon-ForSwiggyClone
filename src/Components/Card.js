@@ -23,13 +23,15 @@ const Card = (prop) => {
 
   const wishList = useSelector((state) => state.cart.wishList);
 
-  // console.log(wishList);
+  // console.log(wishList)
 
-  const { id, title, price, description, image, rating } = prop.list;
+  const {  title, price, description, image, rating } = prop.list;
 
   const truncatedDescription = description.slice(0, 100);
 
   return (
+
+
     <div className="flex flex-col  relative justify-between cursor-pointer w-72 shadow-md h-96">
       <img
         className={`w-6 h-6 absolute object-contain left-64 top-0 ${
@@ -82,5 +84,20 @@ const Card = (prop) => {
     </div>
   );
 };
+
+export const promotedProduct = (Card)=>{
+  return(prop)=>{
+
+
+    console.log(prop)
+
+    return(
+      <>
+      <label className="absolute text-white bg-orange-600 w-auto text-center rounded  p-1">Promoted</label>
+      <Card {...prop}/>
+      </>
+    )
+  }
+}
 
 export default Card;

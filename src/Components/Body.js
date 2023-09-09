@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
 import Card from "./Card";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+
+import { promotedProduct } from "./Card";
 
 const Body = () => {
   const [productDetail, setProductDetail] = useState([]);
@@ -77,82 +78,83 @@ const Body = () => {
     setFilterData(electronicList);
   };
 
-  const [hideFilter , setHideFilter] = useState(false)
+  const [hideFilter, setHideFilter] = useState(false);
 
-  const handleDisplayFilter = ()=>{
-    if(hideFilter==true){
-      setHideFilter(false)
-    }else{
-      setHideFilter(true)
+  const handleDisplayFilter = () => {
+    if (hideFilter == true) {
+      setHideFilter(false);
+    } else {
+      setHideFilter(true);
     }
-  }
- 
+  };
+
+  const NewCard = promotedProduct(Card);
+
   return (
     <div className="flex flex-row">
       <div className="flex flex-col border-b-2 w-1/5 my-5">
         <div className="flex flex-row mb-5">
           <h1 className="mx-2 text-3xl font-bold   ">Filters</h1>
-          <button className="text-xl" onClick={handleDisplayFilter}>⬇️</button>
-        </div>
-       {
-hideFilter&&
-       <div class="w-full flex flex-col gap-2 mx-auto ">
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 p-2 font-bold  active:bg-orange-600 rounded-l"
-            onClick={handleAll}
-          >
-            All
-          </button>
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 p-2 active:bg-orange-600  font-bold rounded-l"
-            onClick={handleMenSetting}
-          >
-            Men's Clothing
-          </button>
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 p-2 active:bg-orange-600  w-40 font-bold  rounded-r"
-            onClick={handleWomenSetting}
-          >
-            Women's Clothing
-          </button>
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 p-2 active:bg-orange-600 w-40 font-bold  rounded-l"
-            onClick={jewellerySetting}
-          >
-            Jewellery
-          </button>
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 p-2 active:bg-orange-600 w-40 font-bold  rounded-r"
-            onClick={electronicsSetting}
-          >
-            Electronics
-          </button>
-
-          {/* based on price */}
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800  p-2 active:bg-orange-600 w-40 font-bold  rounded-r"
-            onClick={handleHighToLow}
-          >
-            High-to-Low
-          </button>
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800  p-2 active:bg-orange-600 w-40 font-bold  rounded-r"
-            onClick={handleLowtoHigh}
-          >
-            Low-to-High
-          </button>
-
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 p-2  active:bg-orange-600 w-40 font-bold  rounded-r"
-            onClick={handleRating}
-          >
-            Highly Rated Products
+          <button className="text-xl" onClick={handleDisplayFilter}>
+            ⬇️
           </button>
         </div>
-}
+        {hideFilter && (
+          <div class="w-full flex flex-col gap-2 mx-auto ">
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 p-2 font-bold  active:bg-orange-600 rounded-l"
+              onClick={handleAll}
+            >
+              All
+            </button>
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 w-40 p-2 active:bg-orange-600  font-bold rounded-l"
+              onClick={handleMenSetting}
+            >
+              Men's Clothing
+            </button>
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 p-2 active:bg-orange-600  w-40 font-bold  rounded-r"
+              onClick={handleWomenSetting}
+            >
+              Women's Clothing
+            </button>
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 p-2 active:bg-orange-600 w-40 font-bold  rounded-l"
+              onClick={jewellerySetting}
+            >
+              Jewellery
+            </button>
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 p-2 active:bg-orange-600 w-40 font-bold  rounded-r"
+              onClick={electronicsSetting}
+            >
+              Electronics
+            </button>
+
+            {/* based on price */}
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800  p-2 active:bg-orange-600 w-40 font-bold  rounded-r"
+              onClick={handleHighToLow}
+            >
+              High-to-Low
+            </button>
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800  p-2 active:bg-orange-600 w-40 font-bold  rounded-r"
+              onClick={handleLowtoHigh}
+            >
+              Low-to-High
+            </button>
+
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 p-2  active:bg-orange-600 w-40 font-bold  rounded-r"
+              onClick={handleRating}
+            >
+              Highly Rated Products
+            </button>
+          </div>
+        )}
       </div>
-
-      {/* Based on Category */}
 
       <div className="w-3/5">
         <div>
@@ -162,9 +164,7 @@ hideFilter&&
         </div>
 
         <div className=" w-full  mx-auto ml-16 grid grid-cols-3 gap-20 justify-evenly mt-9 ">
-          {filterData.map((prod) => {
-            return <Card list={prod} />;
-          })}
+          {filterData.map((data) => data.rating.rate>4?<NewCard list={data}/>:<Card list={data}/>)}
         </div>
       </div>
     </div>
@@ -172,3 +172,6 @@ hideFilter&&
 };
 
 export default Body;
+// {filterData.map((prod) => (
+
+// ))}
