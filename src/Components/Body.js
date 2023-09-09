@@ -172,6 +172,3 @@ const Body = () => {
 };
 
 export default Body;
-// {filterData.map((prod) => (
-
-// ))}

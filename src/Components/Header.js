@@ -22,18 +22,22 @@ const Header = () => {
 
           <div className="w-2/5">
             <ul className="flex flex-row justify-evenly m-6 p-4 text-xl font-medium">
-              <li className="hover:border-b-4 border-blue-500 border-opacity-50 border-solid border-b-1 px-2 py-1">
+             <Link to={'/'}>
+             <li className="hover:border-b-4 border-blue-500 border-opacity-50 border-solid border-b-1 px-2 py-1">
                 Home
               </li>
-              <li className="hover:border-b-4 border-blue-500 border-opacity-50 border-solid border-b-1 px-2 py-1">
-                Product
-              </li>
+              </Link>
+  
+              <Link to={'/about'}>
               <li className="hover:border-b-4 border-blue-500 border-opacity-50 border-solid border-b-1 px-2 py-1">
                 About
               </li>
-              <li className="hover:border-b-4 border-blue-500 border-opacity-50 border-solid border-b-1 px-2 py-1">
+              </Link>
+             <Link to={'/contact'}>
+             <li className="hover:border-b-4 border-blue-500 border-opacity-50 border-solid border-b-1 px-2 py-1">
                 Contact
               </li>
+             </Link>
             </ul>
           </div>
 
