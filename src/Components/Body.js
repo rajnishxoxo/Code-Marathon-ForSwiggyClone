@@ -20,7 +20,13 @@ const Body = () => {
     fetchData();
   }, []);
 
-  console.log(productDetail.rating)
+  const handleRating = () => {
+    const highRated = productDetail.filter((data) => {
+      return data.rating.rate > 3.8;
+    });
+    console.log(highRated);
+    setFilterData(highRated);
+  };
 
   const handleHighToLow = () => {
     const sortedArray = [...productDetail].sort((a, b) => b.price - a.price);
@@ -117,6 +123,13 @@ const Body = () => {
           onClick={handleLowtoHigh}
         >
           Low-to-High
+        </button>
+
+        <button
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+          onClick={handleRating}
+        >
+          HighlyRated
         </button>
       </div>
 
