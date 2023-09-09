@@ -25,13 +25,11 @@ const Card = (prop) => {
 
   // console.log(wishList)
 
-  const {  title, price, description, image, rating } = prop.list;
+  const { title, price, description, image, rating } = prop.list;
 
   const truncatedDescription = description.slice(0, 100);
 
   return (
-
-
     <div className="flex flex-col  relative justify-between cursor-pointer w-72 shadow-md h-96">
       <img
         className={`w-6 h-6 absolute object-contain left-64 top-0 ${
@@ -56,21 +54,19 @@ const Card = (prop) => {
           {truncatedDescription}
         </h4>
         <div className="flex flex-row justify-evenly">
-        <p className="text-xl font-medium w-full text-center whitespace-nowrap truncate overflow-hidden  ">
-          {price}$
-        </p>
-        <p className="text-xl font-medium w-full text-center whitespace-nowrap truncate overflow-hidden  ">
-          {rating.rate}⭐
-        </p>
+          <p className="text-xl font-medium w-full text-center whitespace-nowrap truncate overflow-hidden  ">
+            {price}$
+          </p>
+          <p className="text-xl font-medium w-full text-center whitespace-nowrap truncate overflow-hidden  ">
+            {rating.rate}⭐
+          </p>
         </div>
 
         <div class=" w-full m-2 flex flex-row justify-evenly items-center">
-        
           <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
             Buy Now
           </button>
-        
-        
+
           <button
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
             onClick={() => {
@@ -85,16 +81,17 @@ const Card = (prop) => {
   );
 };
 
-export const promotedProduct = (Card)=>{
-  return(prop)=>{
-
-    return(
+export const promotedProduct = (Card) => {
+  return (prop) => {
+    return (
       <>
-      <label className="absolute text-white bg-orange-600 w-auto text-center rounded  p-1">Promoted</label>
-      <Card {...prop}/>
+        <label className="absolute text-white bg-orange-600 w-auto text-center rounded  p-1">
+          Promoted
+        </label>
+        <Card {...prop} />
       </>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Card;
