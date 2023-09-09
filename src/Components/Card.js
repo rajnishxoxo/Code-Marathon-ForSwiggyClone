@@ -62,21 +62,23 @@ const Card = (prop) => {
           </p>
         </div>
 
-        <div class=" w-full m-2 flex flex-row justify-evenly items-center">
+       
+      </div>
+      <div class=" w-full m-2 flex flex-row justify-evenly items-center">
           <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
             Buy Now
           </button>
 
           <button
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               handleAddToCart(prop);
             }}
           >
             Add To Cart
           </button>
         </div>
-      </div>
     </div>
   );
 };
