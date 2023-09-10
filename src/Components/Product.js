@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { addItem } from "../Utils/cartSlice";
+import { Link } from "react-router-dom";
 
 const Product = () => {
   const { id } = useParams();
@@ -53,10 +54,12 @@ const Product = () => {
             Add To Cart
           </button>
 
-          <button
+         <Link to={'/cart'}>
+         <button
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" >
             Go To Cart
           </button>
+          </Link>
 
         </div>
      </div>
