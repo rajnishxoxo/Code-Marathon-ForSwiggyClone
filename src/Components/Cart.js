@@ -1,22 +1,27 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 
-const Cart = ()=>{
+const Cart = () => {
+  const cart = useSelector((store) => store.cart.item);
 
+  console.log(cart);
 
-    const cart = useSelector((store)=>store.cart.item);
+  return (
+    <div>
+      <h1 className="text-center font-semibold text-4xl m-5">Cart</h1>
 
-    console.log(cart);
+      <div className=" border w-2/4 h-auto">
+        <h1 className="text-lg font-light mx-4">Item List</h1>
+        {cart.map((data) => {
+          return (
+            <div>
+              <h1 className="text-lg font-normal m-3"> {data.list.title}</h1>
 
-    cart.map((data)=>{
-        console.log(data)
-    })
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
-
-    return(
-        <div>
-            <h1>cart section</h1>
-        </div>
-    )
-}
-    
-export default Cart
+export default Cart;
