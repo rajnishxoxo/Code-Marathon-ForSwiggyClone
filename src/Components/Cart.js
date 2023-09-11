@@ -18,9 +18,9 @@ const Cart = () => {
          <img className="w-40 h-20 object-contain m-3" src={image}/>
           <p>{title}</p>
           <div className="">
-            <button className="font-medium text-2xl bg-slate-700 rounded-md m-2">Add More+</button>
+            <button className="font-medium text-2xl bg-slate-700 rounded-md m-2">+</button>
             
-            <button>-</button>
+            <button className="font-medium text-2xl bg-slate-700 rounded-md m-2">-</button>
           </div>
           
         </div>
