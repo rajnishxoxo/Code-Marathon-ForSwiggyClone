@@ -12,6 +12,18 @@ const cartSlice = createSlice({
             state.item.push(action.payload)
         },
 
+        removeItem: (state, action) => {
+            const itemIdToRemove = action.payload.list.id; // Access the ID from the list property
+            state.item = state.item.filter((item) => item.list.id !== itemIdToRemove);
+          },
+        //   With these changes, you should pass the entire item object you want to remove to the action, and the reducer will correctly remove only the item with the matching ID while keeping the others in the cart.
+          
+          
+          
+          
+          
+          
+
         clearCart:(state)=>{
             state.item.length=0;
 
@@ -24,7 +36,7 @@ const cartSlice = createSlice({
 })
 
 
-export const {addItem,clearCart , addtoWishList}=cartSlice.actions;
+export const {addItem,clearCart , removeItem, addtoWishList}=cartSlice.actions;
 
 
 
