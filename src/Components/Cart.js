@@ -5,8 +5,6 @@ import { addItem, removeItem } from "../Utils/cartSlice";
 const Cart = () => {
   const cart = useSelector((store) => store.cart.item);
 
- 
-
   const dispatch = useDispatch();
 
   const handleAddItem = (data) => {
@@ -17,14 +15,14 @@ const Cart = () => {
     dispatch(removeItem(itemData));
   };
 
-  return (
-    cart.length==0?<h1 className="text-center font-bold text-2xl m-5">Please Add Item To Your Cart..</h1> :(
+  return cart.length == 0 ? (
+    <h1 className="text-center font-bold text-2xl m-5">
+      Please Add Item To Your Cart..
+    </h1>
+  ) : (
     <div>
       {cart.map((data) => {
         const { title, image, price, id } = data.list;
-
-        console.log(id);
-
         return (
           <div key={data.id} className="flex items-center m-3">
             <img
@@ -54,7 +52,7 @@ const Cart = () => {
           </div>
         );
       })}
-    </div>)
+    </div>
   );
 };
 
