@@ -10,6 +10,7 @@ const Cart = () => {
   const itemCount = {};
 
   cart.map((data) => {
+    console.log(data)
     const { id } = data?.list;
     if (itemCount[id]) {
       itemCount[id]++;
@@ -35,11 +36,13 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const handleAddItem = (data) => {
+    
     dispatch(addItem(data));
   };
 
-  const handleRemoveItem = (itemData) => {
-    dispatch(removeItem(itemData));
+  const handleRemoveItem = (data) => {
+    dispatch(removeItem(data));
+    console.log(data)
   };
 
   return cart.length == 0 ? (
@@ -62,9 +65,9 @@ const Cart = () => {
             <div className="ml-auto m-2 flex flex-row">
               <button
                 className="font-medium text-2xl bg-slate-700 rounded-md mx-2 w-10"
-                // onClick={() => {
-                //   handleAddItem(data);
-                // }}
+                onClick={() => {
+                  handleAddItem(data.item);
+                }}
               >
                 +
               </button>
@@ -73,9 +76,9 @@ const Cart = () => {
               </div>
               <button
                 className="font-medium text-2xl bg-slate-700 rounded-md w-10"
-                // onClick={() => {
-                //   handleRemoveItem(data);
-                // }}
+                onClick={() => {
+                  handleRemoveItem(data.item);
+                }}
               >
                 -
               </button>
