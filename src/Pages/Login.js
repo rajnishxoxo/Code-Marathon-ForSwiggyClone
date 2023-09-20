@@ -6,6 +6,10 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../Utils/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import{addUser} from '../Utils/userSlice';
+
+
 
 const Login = () => {
   const Useremail = useRef();
@@ -16,6 +20,9 @@ const Login = () => {
   const [authMessage, setAuthMessage] = useState("");
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -29,7 +36,11 @@ const Login = () => {
 
     if (message) return;
 
-    signInWithEmailAndPassword(auth, Useremail.current.value,  Userpassword.current.value)
+    signInWithEmailAndPassword(
+      auth,
+      Useremail.current.value,
+      Userpassword.current.value
+    )
       .then((userCredential) => {
         const user = userCredential.user;
         navigate("/");
@@ -69,6 +80,10 @@ const Login = () => {
     )
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(user)
+        const{uid,email} = user;
+        console.log(email);
+        dispatch(addUser({ uid: uid, email: email}))
         navigate("/");
       })
       .catch((error) => {
@@ -77,6 +92,9 @@ const Login = () => {
 
         setAuthMessage(errorCode + errorMessage);
       });
+
+      
+      
   };
   return (
     <>

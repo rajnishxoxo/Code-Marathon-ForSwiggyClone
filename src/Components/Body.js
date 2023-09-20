@@ -4,6 +4,7 @@ import Card from "./Card";
 
 import { promotedProduct } from "./Card";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Body = () => {
   const [productDetail, setProductDetail] = useState([]);
@@ -88,6 +89,10 @@ const Body = () => {
       setHideFilter(true);
     }
   };
+
+  const user = useSelector((state)=>state.cart.user);
+
+  console.log(user)
 
   const NewCard = promotedProduct(Card);
 
