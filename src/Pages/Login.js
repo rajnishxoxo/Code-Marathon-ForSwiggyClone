@@ -8,6 +8,7 @@ const Login = () => {
   const Username = useRef();
 
   const [signUp, setSignUp] = useState(false);
+  const [authMessage , setAuthMessage] = useState('')
 
   const handleToggle = () => {
     if (signUp === true) {
@@ -17,12 +18,17 @@ const Login = () => {
     }
   };
 
-  const handleLogin = (e) => {
+  const handleSignUP = (e) => {
     e.preventDefault();
-    console.log(Useremail.current.value)
-    // const message =validation()
 
-    // console.log(message)
+    const message = validation(
+      Username.current.value,
+      Useremail.current.value,
+      Userpassword.current.value
+    );
+
+    setAuthMessage(message);
+    
   };
   return (
     <>
@@ -58,19 +64,25 @@ const Login = () => {
               />
 
               {signUp ? (
+                <>
                 <button
-                  onClick={handleLogin}
+                  onClick={handleSignUP}
                   className="bg-red-700 w-full h-10 hover:bg-red-600 text-white font-bold rounded"
                 >
                   Sign-Up
                 </button>
+                <p className="text-2xl font-normal m-2 text-red-600">{authMessage}</p>
+                </>
               ) : (
+                <>
                 <button
-                  onClick={handleLogin}
+                  
                   className="bg-red-700 w-full h-10 hover:bg-red-600 text-white font-bold rounded"
                 >
                   Log in
                 </button>
+                <p>{authMessage}</p>
+                </>
               )}
               {signUp ? (
                 <p
