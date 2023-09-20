@@ -1,6 +1,11 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { validation } from "../Utils/validation";
+import { Link, useNavigate } from "react-router-dom";
+import { emailPasswordValidation, validation } from "../Utils/validation";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../Utils/firebase";
 
 const Login = () => {
   const Useremail = useRef();
@@ -8,7 +13,33 @@ const Login = () => {
   const Username = useRef();
 
   const [signUp, setSignUp] = useState(false);
-  const [authMessage , setAuthMessage] = useState('')
+  const [authMessage, setAuthMessage] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const message = emailPasswordValidation(
+      Useremail.current.value,
+      Userpassword.current.value
+    );
+
+    setAuthMessage(message);
+
+    if (message) return;
+
+    signInWithEmailAndPassword(auth, Useremail.current.value,  Userpassword.current.value)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setAuthMessage(errorCode + errorMessage);
+      });
+  };
 
   const handleToggle = () => {
     if (signUp === true) {
@@ -28,7 +59,24 @@ const Login = () => {
     );
 
     setAuthMessage(message);
-    
+
+    if (message) return;
+
+    createUserWithEmailAndPassword(
+      auth,
+      Useremail.current.value,
+      Userpassword.current.value
+    )
+      .then((userCredential) => {
+        const user = userCredential.user;
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        setAuthMessage(errorCode + errorMessage);
+      });
   };
   return (
     <>
@@ -65,23 +113,25 @@ const Login = () => {
 
               {signUp ? (
                 <>
-                <button
-                  onClick={handleSignUP}
-                  className="bg-red-700 w-full h-10 hover:bg-red-600 text-white font-bold rounded"
-                >
-                  Sign-Up
-                </button>
-                <p className="text-2xl font-normal m-2 text-red-600">{authMessage}</p>
+                  <button
+                    onClick={handleSignUP}
+                    className="bg-red-700 w-full h-10 hover:bg-red-600 text-white font-bold rounded"
+                  >
+                    Sign-Up
+                  </button>
+                  <p className="text-2xl font-normal m-2 text-red-600">
+                    {authMessage}
+                  </p>
                 </>
               ) : (
                 <>
-                <button
-                  
-                  className="bg-red-700 w-full h-10 hover:bg-red-600 text-white font-bold rounded"
-                >
-                  Log in
-                </button>
-                <p>{authMessage}</p>
+                  <button
+                    className="bg-red-700 w-full h-10 hover:bg-red-600 text-white font-bold rounded"
+                    onClick={handleLogin}
+                  >
+                    Log in
+                  </button>
+                  <p>{authMessage}</p>
                 </>
               )}
               {signUp ? (
