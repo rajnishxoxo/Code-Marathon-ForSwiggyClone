@@ -5,13 +5,19 @@ import { addItem, removeItem } from "../Utils/cartSlice";
 const Cart = () => {
   const cart = useSelector((store) => store.cart.item);
 
+  const [priceUpdate , setPriceUpdate] = useState();
+
+
   // console.log(cart)
 
   const itemCount = {};
 
+  console.log(cart);
+
   cart.map((data) => {
-    console.log(data)
-    const { id } = data?.list;
+    const {id} = data.list;
+    console.log(id)
+
     if (itemCount[id]) {
       itemCount[id]++;
     } else {
@@ -31,7 +37,6 @@ const Cart = () => {
     };
   });
 
-  // console.log(uniqueItem);
 
   const dispatch = useDispatch();
 
@@ -41,9 +46,14 @@ const Cart = () => {
   };
 
   const handleRemoveItem = (data) => {
+  
     dispatch(removeItem(data));
-    console.log(data)
+    
   };
+  useEffect(() => {
+    const updatePrice = uniqueItem.reduce((acc, data) => acc + data.item.list.price, 0);
+    setPriceUpdate(updatePrice);
+  }, [cart]);
 
   return cart.length == 0 ? (
     <h1 className="text-center font-bold text-2xl m-5">
@@ -52,9 +62,9 @@ const Cart = () => {
   ) : (
     <div className=" flex flex-row items-center">
       {uniqueItem.map((data) => {
-        const { title, image, price, id } = data.item.list;
+        const { title, image} = data.item.list;
+        
         return (
-          
           <div key={data.id} className="flex items-center w-1/2 m-3 border">
             <img
               className="w-40 h-20 object-contain m-3"
@@ -84,14 +94,13 @@ const Cart = () => {
               </button>
             </div>
           </div>
-          
         );
       })}
 
       <div>
+        
         {uniqueItem && (
           <div className="w-full border h-2/3 flex items-center justify-between p-2">
-            
             <div className="flex items-center flex-col">
               <h1 className="text-lg font-medium">Order total:</h1>
               <div className="ml-1">
@@ -101,9 +110,9 @@ const Cart = () => {
                     {cart.length}
                   </span>
                   <span>
-              Total Price: $
-              {uniqueItem.reduce((acc, data) => acc + data.item.list.price, 0)}
-            </span>
+                    Total Price: $
+                    {priceUpdate}
+                  </span>
                 </h1>
               </div>
             </div>

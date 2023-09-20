@@ -30,8 +30,12 @@ const Product = () => {
     dispatch(addItem(product))
   }
 
+  const displayCart = ()=>{
+    console.log(cart)
+  }
 
-  console.log(cart)
+
+
 
   return (
     <div className="w-full flex flex-row my-5 justify-between ">
@@ -56,7 +60,7 @@ const Product = () => {
 
          <Link to={'/cart'}>
          <button
-            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" >
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={displayCart} >
             Go To Cart
           </button>
           </Link>
